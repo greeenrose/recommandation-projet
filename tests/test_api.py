@@ -3,6 +3,11 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "app"))
 
 from fastapi.testclient import TestClient
+import main
+
+# Fix data path for CI environment
+main.DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "dataset_etudiants1.csv")
+
 from main import app
 
 client = TestClient(app)
